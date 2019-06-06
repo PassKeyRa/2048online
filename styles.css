@@ -1,4 +1,8 @@
 canvas {
 	width:600;
 	height:600;
+	border:3px solid #9b9052;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
 }
