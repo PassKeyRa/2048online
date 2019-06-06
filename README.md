@@ -1,2 +1,2 @@
 # 2048online
-Simple 2048 Online Game
+Simple online version of the popular game 2048
