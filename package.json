@@ -1,0 +1,11 @@
+{
+  "name": "2048online",
+  "version": "1.0.0",
+  "description": "Simple online version of the popular game 2048",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexey Posikera",
+  "license": "ISC"
+}
