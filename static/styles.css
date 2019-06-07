@@ -1,3 +1,17 @@
+body{
+	background-color: #ede7c7;
+}
+#base{
+	margin-left:auto;
+	margin-right:auto;
+	width:610px;
+	height:900px;
+	border:1px solid black;
+}
+#title{
+	text-align:center;
+	color:#514c2c;
+}
 canvas {
 	width:600px;
 	height:600px;
