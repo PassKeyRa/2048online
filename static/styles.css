@@ -6,7 +6,7 @@ body{
 	margin-right:auto;
 	width:610px;
 	height:900px;
-	border:1px solid black;
+	/*border:1px solid black;*/
 }
 #title{
 	text-align:center;
@@ -19,4 +19,7 @@ canvas {
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
+}
+#score{
+	margin-left:50px;
 }
