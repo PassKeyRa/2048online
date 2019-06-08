@@ -20,6 +20,26 @@ canvas {
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 }
+#panel{
+	position:relative;
+	width:610px;
+	height:auto;
+	border:1px solid black;
+}
 #score{
 	margin-left:50px;
+	display:inline-block;
+	color:#7f732c;
+}
+#start{
+	position:absolute;
+	right:50px;
+	padding-left:20px;
+	padding-right:20px;
+	color:#514c2c;
+	display:inline-block;
+	/*border:4px solid #514c2c;
+	border-radius:7px;
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px;*/
 }
