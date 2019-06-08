@@ -19,12 +19,13 @@ canvas {
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
+	opacity:0.7;
 }
 #panel{
 	position:relative;
 	width:610px;
 	height:auto;
-	border:1px solid black;
+	/*border:1px solid black;*/
 }
 #score{
 	margin-left:50px;
