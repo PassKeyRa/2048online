@@ -38,6 +38,7 @@ canvas {
 	padding-right:20px;
 	color:#514c2c;
 	display:inline-block;
+	cursor:pointer;
 	/*border:4px solid #514c2c;
 	border-radius:7px;
 	-moz-border-radius:7px;

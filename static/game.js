@@ -43,6 +43,6 @@ function new_block(){
 	draw_block(tmp);
 }
 
-for(){
+function start(){
 	
 }
