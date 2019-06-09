@@ -7,10 +7,10 @@ function getRandomInt(min, max){
 }
 
 var board = [
-	2,4,0,0,
-	0,0,8,0,
-	0,0,0,0,
-	0,0,0,0
+	2,4,8,16,
+	32,64,128,256,
+	512,1024,2048,4096,
+	8192,0,0,0
 ];
 
 function check_lose(){
@@ -73,7 +73,12 @@ function draw_block(k){
 	var y = (Math.floor(k/4)*100) + ((Math.floor(k/4)+1)*15);
 	ctx.beginPath();
 	ctx.fillStyle = col;
-	ctx.font = "56px serif";
+	if (board[k] <= 512){
+		ctx.font = "48px Helvetica";
+	}
+	else{
+		ctx.font = "40px Helvetica";
+	}
 	ctx.textAlign = "center";
 	ctx.arc(x+5, y+5, 5, 0, Math.PI*2, false);
 	ctx.fill();
@@ -92,7 +97,12 @@ function draw_block(k){
 	else{
 		ctx.fillStyle = "white";
 	}
-	ctx.fillText(board[k].toString(10), x+50, y+70);
+	if (board[k] <= 512){
+		ctx.fillText(board[k].toString(10), x+50, y+65, 80);
+	}
+	else{
+		ctx.fillText(board[k].toString(10), x+50, y+63, 80);
+	}
 }
 
 function new_block(){
@@ -110,7 +120,7 @@ function new_block(){
 draw_board();
 
 function start(){
-	draw_block(0);
-	draw_block(1);
-	draw_block(6);
+	for (var i = 0; i < 13; i++){
+		draw_block(i);
+	}
 }
