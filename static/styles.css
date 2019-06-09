@@ -4,8 +4,8 @@ body{
 #base{
 	margin-left:auto;
 	margin-right:auto;
-	width:610px;
-	height:900px;
+	width:475px;
+	height:700px;
 	/*border:1px solid black;*/
 }
 #title{
@@ -13,9 +13,10 @@ body{
 	color:#514c2c;
 }
 canvas {
-	width:600px;
-	height:600px;
-	border:5px solid #afa256;
+	width:475px;
+	height:475px;
+	/*border:5px solid #afa256;*/
+	background: #776e65;
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
@@ -23,7 +24,7 @@ canvas {
 }
 #panel{
 	position:relative;
-	width:610px;
+	width:475px;
 	height:auto;
 	/*border:1px solid black;*/
 }
