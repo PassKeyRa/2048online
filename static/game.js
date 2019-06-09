@@ -1,3 +1,5 @@
+var colors = ["#d8d3cd", "#ddcdba", "#c98740", "#dd801c", "#dd621c", "#dd3c1c", "#ddcc5d", "#d2dd5c", "#d7e827", "#45e061", "#45e0cb", "#458de0"];
+
 var socket = io();
 
 function getRandomInt(min, max){
@@ -5,8 +7,8 @@ function getRandomInt(min, max){
 }
 
 var board = [
-	0,0,0,0,
-	0,0,0,0,
+	2,4,0,0,
+	0,0,8,0,
 	0,0,0,0,
 	0,0,0,0
 ];
@@ -66,7 +68,31 @@ function draw_board(){
 }
 
 function draw_block(k){
-	
+	var col =  colors[(Math.log2(board[k])-1)%12];
+	var x = ((k%4)*100)+(((k%4)+1)*15);
+	var y = (Math.floor(k/4)*100) + ((Math.floor(k/4)+1)*15);
+	ctx.beginPath();
+	ctx.fillStyle = col;
+	ctx.font = "56px serif";
+	ctx.textAlign = "center";
+	ctx.arc(x+5, y+5, 5, 0, Math.PI*2, false);
+	ctx.fill();
+	ctx.fillRect(x+5, y, 90, 10);
+	ctx.arc(x+95, y+5, 5, 0, Math.PI*2, false);
+	ctx.fill();
+	ctx.fillRect(x+90, y+5, 10, 90);
+	ctx.arc(x+95, y+95, 5, 0, Math.PI*2, false);
+	ctx.fillRect(x+5, y+90, 90, 10);
+	ctx.arc(x+5, y+95, 5, 0, Math.PI*2, false);
+	ctx.fill();
+	ctx.fillRect(x, y+5, 10, 90);
+	if ((Math.log2(board[k])-1)%12 < 2){
+		ctx.fillStyle = "#3d3b39";
+	}
+	else{
+		ctx.fillStyle = "white";
+	}
+	ctx.fillText(board[k].toString(10), x+50, y+70);
 }
 
 function new_block(){
@@ -84,7 +110,7 @@ function new_block(){
 draw_board();
 
 function start(){
-	/*draw_block(0);
+	draw_block(0);
 	draw_block(1);
-	draw_block(6);*/
+	draw_block(6);
 }
