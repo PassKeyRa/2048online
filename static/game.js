@@ -123,4 +123,43 @@ function start(){
 	for (var i = 0; i < 13; i++){
 		draw_block(i);
 	}
+	document.addEventListener('keydown', function(event){
+		switch (event.keyCode){
+			case 87:
+				move('up');
+				new_block();
+				break;
+			case 65:
+				move('left');
+				new_block();
+				break;
+			case 83:
+				move('down');
+				new_block();
+				break;
+			case 68:
+				move('right');
+				new_block();
+				break;
+		}
+
+		switch (event.keyCode){
+			case 38:
+				move('up');
+				new_block();
+				break;
+			case 37:
+				move('left');
+				new_block();
+				break;
+			case 40:
+				move('down');
+				new_block();
+				break;
+			case 39:
+				move('right');
+				new_block();
+				break;
+		}
+	}
 }
