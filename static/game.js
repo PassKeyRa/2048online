@@ -9,8 +9,8 @@ function getRandomInt(min, max){
 var board = [
 	0,2,0,2,
 	0,0,2,0,
-	0,0,4,8,
-	0,0,0,0
+	4,0,4,8,
+	0,8,8,8
 ];
 
 function check_lose(){
@@ -146,74 +146,53 @@ draw_board();
 
 function move(capt){
 	if (capt == 'left'){
-		var speed = [];
-		for (var i = 0; i < board.length; i++){
-			if (board[i] == 0 || i % 4 == 0){
-				var x = ((i%4)*100)+(((i%4)+1)*15);
-				var y = (Math.floor(i/4)*100) + ((Math.floor(i/4)+1)*15);
-				if (i % 4 == 0 && board[i] != 0){
-					speed.push([0, x, y, x, y, true]);
+		for (var i = 0; i < 4; i++){
+			for (var j = 0; j < 4; j++){
+				var k = i*4+j;
+				//console.log(k);
+				if (board[k] == 0){
+					continue;
 				}
-				else{
-					speed.push([0, x, y, x, y, false]);
-				}
-				console.log(0)
-				continue;
-			}
-			var tmp = i % 4;
-			var k = 0;
-			for (var j = 1; j <= tmp; j++){
-				if (board[i-j]!=0){
-					if (board[i-j]==board[i]){
-						k+=1;
-						k = -k;
+
+				for (var r = j+1; r < 4; r++){
+					if (board[i*4+r] == 0){
+						continue;
 					}
-					break;
+					if (board[i*4+r] == board[k]){
+						board[k] *= 2;
+						board[i*4+r] = 0;
+						//console.log('replacement '+board[k]);
+						break;
+					}
+					else{
+						break;
+					}
 				}
-				else{
-					k+=1;
+				var l = j-1;
+				var shift = i*4+j;
+				while (l >= 0){
+					if (board[i*4+l] != 0){
+						break;
+					}
+					shift = i*4+l;
+					l--;
+				}
+				//console.log(shift);
+				if (shift != k){
+					board[shift] = board[k];
+					board[k] = 0;
 				}
 			}
-			var x = ((i%4)*100)+(((i%4)+1)*15);
-			var y = (Math.floor(i/4)*100) + ((Math.floor(i/4)+1)*15);
-			var x1 = (((i-Math.abs(k))%4)*100)+((((i-Math.abs(k))%4)+1)*15);
-			//console.log(k);
-			speed.push([k, x, y, x1, y, false]); //k, x, y, x1, y1
+			//console.log(board);
 		}
-		//console.log(speed);
-		
+
 		ctx.clearRect(0, 0, 475, 475);
 		draw_board();
-
-		for (var l = 0; l < speed.length; l++){
-			if (speed[l][0] == 0){
-				if (speed[l][5] == true){
-					draw_block2(l, speed[l][1], speed[l][2]);
-				}
-				continue;
+		for (var i = 0; i < board.length; i++){
+			if (board[i] != 0){
+				draw_block(i);
 			}
-			
-			if (speed[l][1] != speed[l][3]){
-				if (speed[l][0] < 0){
-					board[l-Math.abs(speed[l][0])] = board[l]*2;
-					board[l] = 0;
-				}
-				else{
-					board[l-Math.abs(speed[l][0])] = board[l];
-					board[l] = 0;
-				}
-				speed[l][1] = speed[l][3];
-				draw_block2(l-Math.abs(speed[l][0]), speed[l][1], speed[l][2]);
-				continue;
-			}
-			/*if (speed[l][1] == speed[l][3] && speed[l][0] < 0){
-				board[l-Math.abs(speed[l][0])] += board[l];
-				board[l] = 0;
-				draw_block2(l-Math.abs(speed[l][0]), speed[l][1], speed[l][2]);
-				continue;
-			}*/
 		}
-		console.log(board);
 	}
 	/*if (capt == 'right'){
 		for (var i = 0; i < board.length; i++){
