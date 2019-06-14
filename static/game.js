@@ -161,7 +161,6 @@ function move(capt){
 					if (board[i*4+r] == board[k]){
 						board[k] *= 2;
 						board[i*4+r] = 0;
-						//console.log('replacement '+board[k]);
 						break;
 					}
 					else{
@@ -177,38 +176,140 @@ function move(capt){
 					shift = i*4+l;
 					l--;
 				}
-				//console.log(shift);
 				if (shift != k){
 					board[shift] = board[k];
 					board[k] = 0;
 				}
 			}
-			//console.log(board);
 		}
+	}
+	
+	if (capt == 'right'){
+		for (var i = 0; i < 4; i++){
+			for (var j = 3; j >= 0; j--){
+				var k = i*4+j;
+				//console.log(i+" "+k);
+				
+				if (board[k] == 0){
+					continue;
+				}
 
-		ctx.clearRect(0, 0, 475, 475);
-		draw_board();
-		for (var i = 0; i < board.length; i++){
-			if (board[i] != 0){
-				draw_block(i);
+				for (var r = j-1; r >= 0; r--){
+					if (board[i*4+r] == 0){
+						continue;
+					}
+					if (board[i*4+r] == board[k]){
+						board[k] *= 2;
+						board[i*4+r] = 0;
+						//console.log('replacement');
+						break;
+					}
+					else{
+						break;
+					}
+				}
+				var l = j+1;
+				var shift = i*4+j;
+				while (l <= 3){
+					if (board[i*4+l] != 0){
+						break;
+					}
+					shift = i*4+l;
+					l++;
+				}
+				if (shift != k){
+					board[shift] = board[k];
+					board[k] = 0;
+				}
 			}
 		}
 	}
-	/*if (capt == 'right'){
-		for (var i = 0; i < board.length; i++){
-			
-		}
-	}
+
 	if (capt == 'up'){
-		for (var i = 0; i < board.length; i++){
-			
+		for (var j = 3; j >= 0; j--){
+			for (var i = 0; i < 4; i++){
+				var k = i*4+j;
+				
+				if (board[k] == 0){
+					continue;
+				}
+
+				for (var r = i+1; r < 4; r++){
+					if (board[r*4+j] == 0){
+						continue;
+					}
+					if (board[r*4+j] == board[k]){
+						board[k] *= 2;
+						board[r*4+j] = 0;
+						break;
+					}
+					else{
+						break;
+					}
+				}
+				var l = i-1;
+				var shift = i*4+j;
+				while (l >= 0){
+					if (board[l*4+j] != 0){
+						break;
+					}
+					shift = l*4+j;
+					l--;
+				}
+				if (shift != k){
+					board[shift] = board[k];
+					board[k] = 0;
+				}
+			}
 		}
 	}
+
 	if (capt == 'down'){
-		for (var i = 0; i < board.length; i++){
-			
+		for (var j = 3; j >= 0; j--){
+			for (var i = 3; i >= 0; i--){
+				var k = i*4+j;
+				
+				if (board[k] == 0){
+					continue;
+				}
+
+				for (var r = i-1; r >= 0; r--){
+					if (board[r*4+j] == 0){
+						continue;
+					}
+					if (board[r*4+j] == board[k]){
+						board[k] *= 2;
+						board[r*4+j] = 0;
+						break;
+					}
+					else{
+						break;
+					}
+				}
+				var l = i+1;
+				var shift = i*4+j;
+				while (l <= 3){
+					if (board[l*4+j] != 0){
+						break;
+					}
+					shift = l*4+j;
+					l++;
+				}
+				if (shift != k){
+					board[shift] = board[k];
+					board[k] = 0;
+				}
+			}
 		}
-	}*/
+	}
+
+	ctx.clearRect(0, 0, 475, 475);
+	draw_board();
+	for (var i = 0; i < board.length; i++){
+		if (board[i] != 0){
+			draw_block(i);
+		}
+	}
 }
 
 function start(){
